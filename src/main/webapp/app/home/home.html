@@ -1,0 +1,41 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-4">
+            <span class="hipster img-responsive img-rounded"></span>
+        </div>
+        <div class="col-md-8">
+            <h1>ドノニク？</h1>
+            <p class="lead">「ドノニク？」はBBQで美味しいお肉を楽しむためのサービスです</p>
+            <ul>
+                <li>STEP1.肉の画像を送る</li>
+                <li>STEP2.ドノニクがBBQにピッタリなお肉を判定</li>
+                <li>STEP3.美味しいお肉でBBQ！</li>
+            </ul>
+
+            <div ng-switch="vm.isAuthenticated()">
+                <div class="alert alert-success" ng-switch-when="true"
+                     translate-values="{username: '{{vm.account.login}}'}">
+                    You are logged in as user "{{vm.account.login}}".
+                </div>
+
+                <!--<div class="alert alert-warning" ng-switch-when="false"
+                     data-translate="global.messages.info.authenticated" translate-compile>
+                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the
+                    default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user"
+                    and password="user").
+                </div>
+
+                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register"
+                     translate-compile>
+                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+                </div>-->
+            </div>
+
+
+            <!--<p>
+                <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a
+                href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
+            </p>-->
+        </div>
+    </div>
+</div>
