@@ -1,5 +1,7 @@
 package hajimete.meet.model;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 public class Response {
 
     private int status;
@@ -28,5 +30,10 @@ public class Response {
 
     public void setResult(Result result) {
         this.result = result;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }

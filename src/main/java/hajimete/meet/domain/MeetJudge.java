@@ -1,5 +1,6 @@
 package hajimete.meet.domain;
 
+import hajimete.meet.config.JudgeComment;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -76,6 +77,10 @@ public class MeetJudge implements Serializable {
 
     public void setScore(Float score) {
         this.score = score;
+    }
+
+    public String getComment() {
+        return JudgeComment.getComment(this.score);
     }
 
     @Override

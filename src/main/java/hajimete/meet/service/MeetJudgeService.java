@@ -2,6 +2,7 @@ package hajimete.meet.service;
 
 import com.google.gson.Gson;
 import hajimete.meet.domain.MeetJudge;
+import hajimete.meet.model.Response;
 import hajimete.meet.repository.MeetJudgeRepository;
 import org.apache.http.Consts;
 import org.apache.http.Header;
@@ -21,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Service Implementation for managing MeetJudge.
@@ -38,7 +38,7 @@ public class MeetJudgeService {
         this.meetJudgeRepository = meetJudgeRepository;
     }
 
-    private static final String MEET_SCORE_URL = "https://api.a3rt.recruit-tech.co.jp/image_influence/v1/image_score";
+    private static final String MEET_SCORE_URL = "https://api.a3rt.recruit-tech.co.jp/image_influence/v1/meat_score";
     private static final String API_KEY = "RQVPHHgbajQOxwUUgeKJNKSJAnyYRegS";
 
     /**
@@ -50,8 +50,7 @@ public class MeetJudgeService {
     public MeetJudge save(MeetJudge meetJudge) throws IOException {
         log.debug("Request to save MeetJudge : {}", meetJudge);
 
-        this.judge(meetJudge);
-
+        meetJudge.setScore(this.getScore(meetJudge));
 
         MeetJudge result = meetJudgeRepository.save(meetJudge);
         return result;
@@ -93,7 +92,7 @@ public class MeetJudgeService {
         meetJudgeRepository.delete(id);
     }
 
-    private MeetJudge judge(MeetJudge meetJudge) throws IOException {
+    private float getScore(MeetJudge meetJudge) throws IOException {
         String userAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0";
         List<Header> headers = new ArrayList<Header>();
         headers.add(new BasicHeader("User-Agent", userAgent));
@@ -116,8 +115,7 @@ public class MeetJudgeService {
         String body = EntityUtils.toString(response.getEntity(), "UTF-8");
 
         Gson gson = new Gson();
-        Map map = gson.fromJson(body, Map.class);
-        Map result = (Map) map.get("result");
+        Response responseImageInfluence = gson.fromJson(body, Response.class);
 
         log.debug("=======");
         log.debug("responseStatus:" + responseStatus);
@@ -125,7 +123,7 @@ public class MeetJudgeService {
         log.debug("body" + body);
         log.debug("=======");
 
-        return meetJudge;
+        return responseImageInfluence.getResult().getScore();
     }
 
 }

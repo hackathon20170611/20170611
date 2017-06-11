@@ -20,7 +20,7 @@ public enum JudgeComment {
         this.comment = comment;
     }
 
-    public String getComment(float score) {
+    public static String getComment(float score) {
 
         if (0 <= score && score < 1) {
             return JUDGE_COMMENT_0.comment;
