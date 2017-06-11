@@ -16,7 +16,8 @@
                 "title": "Meet Judge"
             },
             "image": "Image",
-            "score": "Score"
+            "score": "Score",
+            "comment": "Comment"
         }
     }
 }

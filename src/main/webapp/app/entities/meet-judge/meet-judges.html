@@ -21,6 +21,7 @@
                 <th><span data-translate="global.field.id">ID</span></th>
                 <th><span data-translate="meetApp.meetJudge.image">Image</span></th>
                 <th><span data-translate="meetApp.meetJudge.score">Score</span></th>
+                <th><span data-translate="meetApp.meetJudge.comment">Comment</span></th>
                 <th></th>
             </tr>
             </thead>
@@ -30,12 +31,11 @@
                 <td>
                     <a ng-if="meetJudge.image" ng-click="vm.openFile(meetJudge.imageContentType, meetJudge.image)">
                         <img data-ng-src="{{'data:' + meetJudge.imageContentType + ';base64,' + meetJudge.image}}"
-                             style="max-height: 30px;" alt="meetJudge image"/>
+                             style="max-height: 60px;" alt="meetJudge image"/>
                     </a>
-                    <span
-                        ng-if="meetJudge.image">{{meetJudge.imageContentType}}, {{vm.byteSize(meetJudge.image)}}</span>
                 </td>
                 <td>{{meetJudge.score}}</td>
+                <td>{{meetJudge.comment}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
