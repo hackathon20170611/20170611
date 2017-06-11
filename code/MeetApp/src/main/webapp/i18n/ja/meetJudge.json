@@ -1,0 +1,22 @@
+{
+    "meetApp": {
+        "meetJudge": {
+            "home": {
+                "title": "MeetJudges",
+                "createLabel": "Meet Judge を追加",
+                "createOrEditLabel": "Meet Judgeを追加または編集"
+            },
+            "created": "A new Meet Judge is created with identifier {{ param }}",
+            "updated": "A Meet Judge is updated with identifier {{ param }}",
+            "deleted": "A Meet Judge is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Meet Judge {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Meet Judge"
+            },
+            "image": "Image",
+            "rank": "Rank"
+        }
+    }
+}
