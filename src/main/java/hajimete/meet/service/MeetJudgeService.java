@@ -123,7 +123,7 @@ public class MeetJudgeService {
         log.debug("body" + body);
         log.debug("=======");
 
-        return responseImageInfluence.getResult().getScore();
+        return responseImageInfluence.getResult().getScore() * 3;
     }
 
 }
