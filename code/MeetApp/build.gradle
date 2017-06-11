@@ -207,6 +207,10 @@ dependencies {
     testCompile "org.hamcrest:hamcrest-library"
     optional "org.springframework.boot:spring-boot-configuration-processor:${spring_boot_version}"
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
+
+    compile "org.apache.httpcomponents:httpclient:4.5.3"
+    compile "org.apache.httpcomponents:httpmime:4.5.3"
+    compile "com.google.code.gson:gson:2.8.1"
 }
 
 clean {

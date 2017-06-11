@@ -28,8 +28,8 @@ public class MeetJudge implements Serializable {
     @Column(name = "image_content_type")
     private String imageContentType;
 
-    @Column(name = "rank")
-    private Long rank;
+    @Column(name = "score")
+    private Float score;
 
     public Long getId() {
         return id;
@@ -65,17 +65,17 @@ public class MeetJudge implements Serializable {
         this.imageContentType = imageContentType;
     }
 
-    public Long getRank() {
-        return rank;
+    public Float getScore() {
+        return score;
     }
 
-    public MeetJudge rank(Long rank) {
-        this.rank = rank;
+    public MeetJudge score(Float score) {
+        this.score = score;
         return this;
     }
 
-    public void setRank(Long rank) {
-        this.rank = rank;
+    public void setScore(Float score) {
+        this.score = score;
     }
 
     @Override
@@ -104,7 +104,7 @@ public class MeetJudge implements Serializable {
             "id=" + id +
             ", image='" + image + "'" +
             ", imageContentType='" + imageContentType + "'" +
-            ", rank='" + rank + "'" +
+            ", score='" + score + "'" +
             '}';
     }
 }

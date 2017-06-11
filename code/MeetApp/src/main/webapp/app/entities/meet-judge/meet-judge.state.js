@@ -106,7 +106,7 @@
                             return {
                                 image: null,
                                 imageContentType: null,
-                                rank: null,
+                                score: null,
                                 id: null
                             };
                         }

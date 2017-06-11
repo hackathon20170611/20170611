@@ -27,7 +27,7 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="rank" type="bigint">
+            <column name="score" type="${floatType}">
                 <constraints nullable="true"/>
             </column>
 

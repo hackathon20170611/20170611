@@ -20,7 +20,7 @@
             <tr>
                 <th><span data-translate="global.field.id">ID</span></th>
                 <th><span data-translate="meetApp.meetJudge.image">Image</span></th>
-                <th><span data-translate="meetApp.meetJudge.rank">Rank</span></th>
+                <th><span data-translate="meetApp.meetJudge.score">Score</span></th>
                 <th></th>
             </tr>
             </thead>
@@ -35,7 +35,7 @@
                     <span
                         ng-if="meetJudge.image">{{meetJudge.imageContentType}}, {{vm.byteSize(meetJudge.image)}}</span>
                 </td>
-                <td>{{meetJudge.rank}}</td>
+                <td>{{meetJudge.score}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

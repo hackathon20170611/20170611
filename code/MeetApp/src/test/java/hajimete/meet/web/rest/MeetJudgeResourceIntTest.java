@@ -42,8 +42,8 @@ public class MeetJudgeResourceIntTest {
     private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
-    private static final Long DEFAULT_RANK = 1L;
-    private static final Long UPDATED_RANK = 2L;
+    private static final Float DEFAULT_SCORE = 1F;
+    private static final Float UPDATED_SCORE = 2F;
 
     @Autowired
     private MeetJudgeRepository meetJudgeRepository;
@@ -79,7 +79,7 @@ public class MeetJudgeResourceIntTest {
 
     /**
      * Create an entity for this test.
-     * <p>
+     *
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -87,7 +87,7 @@ public class MeetJudgeResourceIntTest {
         MeetJudge meetJudge = new MeetJudge()
             .image(DEFAULT_IMAGE)
             .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
-            .rank(DEFAULT_RANK);
+            .score(DEFAULT_SCORE);
         return meetJudge;
     }
 
@@ -113,7 +113,7 @@ public class MeetJudgeResourceIntTest {
         MeetJudge testMeetJudge = meetJudgeList.get(meetJudgeList.size() - 1);
         assertThat(testMeetJudge.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testMeetJudge.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
-        assertThat(testMeetJudge.getRank()).isEqualTo(DEFAULT_RANK);
+        assertThat(testMeetJudge.getScore()).isEqualTo(DEFAULT_SCORE);
     }
 
     @Test
@@ -148,7 +148,7 @@ public class MeetJudgeResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(meetJudge.getId().intValue())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
-            .andExpect(jsonPath("$.[*].rank").value(hasItem(DEFAULT_RANK.intValue())));
+            .andExpect(jsonPath("$.[*].score").value(hasItem(DEFAULT_SCORE.doubleValue())));
     }
 
     @Test
@@ -164,7 +164,7 @@ public class MeetJudgeResourceIntTest {
             .andExpect(jsonPath("$.id").value(meetJudge.getId().intValue()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
-            .andExpect(jsonPath("$.rank").value(DEFAULT_RANK.intValue()));
+            .andExpect(jsonPath("$.score").value(DEFAULT_SCORE.doubleValue()));
     }
 
     @Test
@@ -188,7 +188,7 @@ public class MeetJudgeResourceIntTest {
         updatedMeetJudge
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .rank(UPDATED_RANK);
+            .score(UPDATED_SCORE);
 
         restMeetJudgeMockMvc.perform(put("/api/meet-judges")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -201,7 +201,7 @@ public class MeetJudgeResourceIntTest {
         MeetJudge testMeetJudge = meetJudgeList.get(meetJudgeList.size() - 1);
         assertThat(testMeetJudge.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testMeetJudge.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
-        assertThat(testMeetJudge.getRank()).isEqualTo(UPDATED_RANK);
+        assertThat(testMeetJudge.getScore()).isEqualTo(UPDATED_SCORE);
     }
 
     @Test

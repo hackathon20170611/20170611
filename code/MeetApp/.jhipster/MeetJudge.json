@@ -8,8 +8,8 @@
             "fieldTypeBlobContent": "image"
         },
         {
-            "fieldName": "rank",
-            "fieldType": "Long"
+            "fieldName": "score",
+            "fieldType": "Float"
         }
     ],
     "changelogDate": "20170611024453",
